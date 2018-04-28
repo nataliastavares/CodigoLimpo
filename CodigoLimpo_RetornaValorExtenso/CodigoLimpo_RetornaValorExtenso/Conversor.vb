@@ -124,6 +124,7 @@ Public Class Conversor
                 'sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
                 'sMilhares = dNumero.ToString.Substring(iDigitos - 4, 1)
                 sNumeroExtenso = "Não foi possivel converter em extenso"
+                Return sNumeroExtenso
             End If
         Else
             sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(dNumero))
