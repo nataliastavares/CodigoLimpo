@@ -10,9 +10,10 @@
         Console.Write("Digite um número em reais: ")
         'Faz a leitura do numero do usuario
         bNumero = Console.ReadLine()
-        sNumeroExtenso = objConversor.Numeros0e19(bNumero)
 
-        objConversor.validarCasasDecimais(Convert.ToString(bNumero))
+        objConversor.validarValoresReais(Convert.ToString(bNumero))
+
+        sNumeroExtenso = objConversor.Numeros0e19(bNumero)
 
         Console.WriteLine("Valor por Extenso: " + sNumeroExtenso)
 

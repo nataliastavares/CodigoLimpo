@@ -69,17 +69,30 @@ Public Class Conversor
         Return sNumeroExtenso
     End Function
 
-    Public Sub validarCasasDecimais(ByVal dNumero As String)
+    Public Sub validarValoresReais(ByVal dNumero As String)
         Dim iDigitos As Int32
         Dim sUnidade As String
         Dim sDezenas As String
-        Dim sCentanas As String
+        Dim sCentenas As String
         Dim sMilhares As String
 
         iDigitos = dNumero.ToString.Length()
 
-        sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
-
+        If iDigitos = 1 Then
+            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+        ElseIf iDigitos = 2 Then
+            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+        ElseIf iDigitos = 3 Then
+            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+            sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
+        ElseIf iDigitos = 4 Then
+            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+            sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
+            sMilhares = dNumero.ToString.Substring(iDigitos - 4, 1)
+        End If
     End Sub
 
 End Class
