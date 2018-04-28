@@ -49,9 +49,37 @@ Public Class Conversor
                 sNumeroExtenso = "dezoito"
             Case 19
                 sNumeroExtenso = "dezenove"
+            Case 20
+                sNumeroExtenso = "vinte"
+            Case 30
+                sNumeroExtenso = "trinta"
+            Case 40
+                sNumeroExtenso = "quarenta"
+            Case 50
+                sNumeroExtenso = "cinquenta"
+            Case 60
+                sNumeroExtenso = "sessenta"
+            Case 70
+                sNumeroExtenso = "setenta"
+            Case 80
+                sNumeroExtenso = "oitenta"
+            Case 90
+                sNumeroExtenso = "noventa"
         End Select
         Return sNumeroExtenso
     End Function
 
+    Public Sub validarCasasDecimais(ByVal dNumero As String)
+        Dim iDigitos As Int32
+        Dim sUnidade As String
+        Dim sDezenas As String
+        Dim sCentanas As String
+        Dim sMilhares As String
+
+        iDigitos = dNumero.ToString.Length()
+
+        sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+
+    End Sub
 
 End Class
