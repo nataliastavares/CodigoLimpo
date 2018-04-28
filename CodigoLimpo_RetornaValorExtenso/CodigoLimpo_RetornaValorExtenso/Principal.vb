@@ -11,9 +11,9 @@
         'Faz a leitura do numero do usuario
         bNumero = Console.ReadLine()
 
-        objConversor.validarValoresReais(Convert.ToString(bNumero))
+        sNumeroExtenso = objConversor.validarValoresReais(Convert.ToString(bNumero))
 
-        sNumeroExtenso = objConversor.Numeros0e19(bNumero)
+        'sNumeroExtenso = objConversor.Numeros0e19(bNumero)
 
         Console.WriteLine("Valor por Extenso: " + sNumeroExtenso)
 

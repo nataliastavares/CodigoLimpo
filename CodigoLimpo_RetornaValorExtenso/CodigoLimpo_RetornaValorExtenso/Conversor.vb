@@ -6,7 +6,6 @@ Public Class Conversor
     'Função que converte números entre 0 e 19
     Public Function Numeros0e19(ByVal dNumero As Decimal) As String
         Dim sNumeroExtenso As String = ""
-
         Select Case dNumero
 
             Case 0
@@ -65,34 +64,61 @@ Public Class Conversor
                 sNumeroExtenso = "oitenta"
             Case 90
                 sNumeroExtenso = "noventa"
+            Case 100
+                sNumeroExtenso = "cento"
+            Case 200
+                sNumeroExtenso = "duzentos"
+            Case 300
+                sNumeroExtenso = "trezentos"
+            Case 400
+                sNumeroExtenso = "quatrocentos"
+            Case 500
+                sNumeroExtenso = "quinhetos"
+            Case 600
+                sNumeroExtenso = "seiscentos"
+            Case 700
+                sNumeroExtenso = "setecentos"
+            Case 800
+                sNumeroExtenso = "oitocentos"
+            Case 900
+                sNumeroExtenso = "novecentos"
         End Select
         Return sNumeroExtenso
     End Function
 
-    Public Sub validarValoresReais(ByVal dNumero As String)
+    Public Function validarValoresReais(ByVal dNumero As String) As String
         Dim iDigitos As Int32
         Dim sUnidade As String
         Dim sDezenas As String
         Dim sCentenas As String
         Dim sMilhares As String
+        Dim sNumeroExtenso As String = ""
 
         iDigitos = dNumero.ToString.Length()
 
         If iDigitos = 1 Then
             sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+            sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sUnidade))
         ElseIf iDigitos = 2 Then
-            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
             sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+            sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sDezenas & "0"))
+            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+            sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sUnidade))
         ElseIf iDigitos = 3 Then
-            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
-            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
             sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
+            sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sCentenas & "00"))
+            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+            sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sDezenas & "0"))
+            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+            sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sUnidade))
         ElseIf iDigitos = 4 Then
             sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
             sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
             sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
             sMilhares = dNumero.ToString.Substring(iDigitos - 4, 1)
         End If
-    End Sub
+
+        Return sNumeroExtenso & " Reais"
+    End Function
 
 End Class
