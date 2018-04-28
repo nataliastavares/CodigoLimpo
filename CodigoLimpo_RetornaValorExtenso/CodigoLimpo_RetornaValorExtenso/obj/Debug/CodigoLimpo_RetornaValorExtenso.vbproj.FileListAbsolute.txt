@@ -1,0 +1,2 @@
+c:\users\natalia.tavares\documents\visual studio 2013\Projects\CodigoLimpo_RetornaValorExtenso\CodigoLimpo_RetornaValorExtenso\bin\Debug\CodigoLimpo_RetornaValorExtenso.exe.config
+C:\Users\natalia.tavares\Documents\GitHub\CodigoLimpo\CodigoLimpo_RetornaValorExtenso\CodigoLimpo_RetornaValorExtenso\bin\Debug\CodigoLimpo_RetornaValorExtenso.exe.config
