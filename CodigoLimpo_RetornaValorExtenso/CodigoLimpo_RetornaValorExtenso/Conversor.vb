@@ -96,27 +96,39 @@ Public Class Conversor
 
         iDigitos = dNumero.ToString.Length()
 
-        If iDigitos = 1 Then
-            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
-            sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sUnidade))
-        ElseIf iDigitos = 2 Then
-            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
-            sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sDezenas & "0"))
-            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
-            sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sUnidade))
-        ElseIf iDigitos = 3 Then
-            sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
-            sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sCentenas & "00"))
-            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
-            sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sDezenas & "0"))
-            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
-            sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sUnidade))
-        ElseIf iDigitos = 4 Then
-            sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
-            sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
-            sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
-            sMilhares = dNumero.ToString.Substring(iDigitos - 4, 1)
+        If dNumero > 19 Then
+            If iDigitos = 1 Then
+                sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+                sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sUnidade))
+            ElseIf iDigitos = 2 Then
+                sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+                sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sDezenas & "0"))
+                If sUnidade <> 0 Then
+                    sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+                End If
+                sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sUnidade))
+            ElseIf iDigitos = 3 Then
+                sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
+                sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(sCentenas & "00"))
+                sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+                If sDezenas <> 0 Then
+                    sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sDezenas & "0"))
+                End If
+                sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+                If sUnidade <> 0 Then
+                    sNumeroExtenso &= " e " & Me.Numeros0e19(Convert.ToInt32(sUnidade))
+                End If
+            ElseIf iDigitos = 4 Then
+                'sUnidade = dNumero.ToString.Substring(iDigitos - 1, 1)
+                'sDezenas = dNumero.ToString.Substring(iDigitos - 2, 1)
+                'sCentenas = dNumero.ToString.Substring(iDigitos - 3, 1)
+                'sMilhares = dNumero.ToString.Substring(iDigitos - 4, 1)
+                sNumeroExtenso = "Não foi possivel converter em extenso"
+            End If
+        Else
+            sNumeroExtenso = Me.Numeros0e19(Convert.ToInt32(dNumero))
         End If
+        
 
         Return sNumeroExtenso & " Reais"
     End Function
